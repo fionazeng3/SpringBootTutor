@@ -13,8 +13,12 @@ public class CourseRepository {
     List<Course> courses = new ArrayList<>();
 
     public CourseRepository() {
+
+    }
+
+    public List<Course> addClass(String className) {
         Course javaOne = Course.builder()
-                .className("Java I")
+                .className(className)
                 .instructor(new Instructor("Steve", "Jobs", "Phd", "TownHall201"))
                 .startDate(new Date("8/1/2018"))
                 .endDate(new Date("12/24/2018"))
@@ -22,6 +26,8 @@ public class CourseRepository {
                 .build();
 
         courses.add(javaOne);
+        return courses;
+
     }
 
 
@@ -31,16 +37,18 @@ public class CourseRepository {
         return  courses;
     }
 
-    public List<Course> findAllCourse(String searchByCourseName){
-
-        return new ArrayList<Course>();
-    }
-
-    public List<Course> findCourseByName(String courseName) {
-        if(courseName.equals("Java_I")) {
-            return courses;
+    public List<Course> deleteClass(String courseName) {
+        for(int i = 0; i < courses.size(); i++) {
+            if(courses.get(i).getClassName().equals(courseName)) courses.remove(i);
         }
-
-        return new ArrayList<Course>();
+        return courses;
     }
+
+    public List<Course> updateClass(String fromName, String toName) {
+       this.deleteClass(fromName);
+       this.addClass(toName);
+        return courses;
+    }
+
+
 }

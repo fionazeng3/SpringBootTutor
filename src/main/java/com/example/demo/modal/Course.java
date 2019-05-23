@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Course {
-    private String className;
+    public String className;
     private Instructor instructor;
     private Date startDate;
     private Date endDate;
