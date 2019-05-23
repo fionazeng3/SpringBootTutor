@@ -21,16 +21,16 @@ public class CourseService {
         return courseRepository.findAllClasses();
     }
 
-    public List<Course> addClass(String className) {
-        return courseRepository.addClass(className);
+    public List<Course> addClass(Course newClass) {
+        return courseRepository.addClass(newClass);
     }
 
-    public List<Course> deleteClass(String className) {
-        return courseRepository.deleteClass(className);
+    public List<Course> deleteClass(Course unwantedClass) {
+        return courseRepository.deleteClass(unwantedClass);
     }
 
-    public List<Course> updateClass(String fromName, String toName) {
-        return courseRepository.updateClass(fromName, toName);
+    public List<Course> updateClass(List<Course> changeForm) {
+        return courseRepository.updateClass(changeForm);
     }
 
 

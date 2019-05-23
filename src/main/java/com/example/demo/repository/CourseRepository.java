@@ -13,19 +13,19 @@ public class CourseRepository {
     List<Course> courses = new ArrayList<>();
 
     public CourseRepository() {
-
-    }
-
-    public List<Course> addClass(String className) {
         Course javaOne = Course.builder()
-                .className(className)
+                .className("JavaII")
                 .instructor(new Instructor("Steve", "Jobs", "Phd", "TownHall201"))
                 .startDate(new Date("8/1/2018"))
                 .endDate(new Date("12/24/2018"))
                 .timeFrame("8am-10am")
                 .build();
-
         courses.add(javaOne);
+
+    }
+
+    public List<Course> addClass(Course newClass) {
+        courses.add(newClass);
         return courses;
 
     }
@@ -37,16 +37,16 @@ public class CourseRepository {
         return  courses;
     }
 
-    public List<Course> deleteClass(String courseName) {
+    public List<Course> deleteClass(Course unwantedClass) {
         for(int i = 0; i < courses.size(); i++) {
-            if(courses.get(i).getClassName().equals(courseName)) courses.remove(i);
+            if(courses.get(i).getClassName().equals(unwantedClass.getClassName())) courses.remove(i);
         }
         return courses;
     }
 
-    public List<Course> updateClass(String fromName, String toName) {
-       this.deleteClass(fromName);
-       this.addClass(toName);
+    public List<Course> updateClass(List<Course> changeForm) {
+        this.deleteClass(changeForm.get(0));
+        this.addClass(changeForm.get(1));
         return courses;
     }
 

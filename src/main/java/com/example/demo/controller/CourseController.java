@@ -26,21 +26,21 @@ public class CourseController {
         return new ResponseEntity<>(allCourses, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/add/{inputString}", produces = "application/json")
-    public HttpEntity<Course> addClass(@PathVariable("inputString") String className) {
-        List<Course> newList = courseService.addClass(className);
+    @PostMapping(path = "/add", produces = "application/json")
+    public HttpEntity<Course> addClass(@RequestBody Course newClass) {
+        List<Course> newList = courseService.addClass(newClass);
         return new ResponseEntity(newList, HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/delete/{inputString}", produces = "application/json")
-    public HttpEntity<Course> deleteClass(@PathVariable("inputString") String className) {
-        List<Course> newList = courseService.deleteClass(className);
+    @DeleteMapping(path = "/delete", produces = "application/json")
+    public HttpEntity<Course> deleteClass(@RequestBody Course unwantedClass) {
+        List<Course> newList = courseService.deleteClass(unwantedClass);
         return new ResponseEntity(newList, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/put/{fromName}/{toName}", produces = "application/json")
-    public HttpEntity<Course> updateClass(@PathVariable("fromName") String fromName, @PathVariable("toName") String toName) {
-        List<Course> newList = courseService.updateClass(fromName, toName);
+    @PutMapping(path = "/put", produces = "application/json")
+    public HttpEntity<Course> updateClass(@RequestBody List<Course> changeForm) {
+        List<Course> newList = courseService.updateClass(changeForm);
         return new ResponseEntity(newList, HttpStatus.OK);
     }
 
